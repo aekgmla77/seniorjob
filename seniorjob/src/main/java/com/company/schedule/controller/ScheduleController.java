@@ -1,7 +1,11 @@
 package com.company.schedule.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -125,6 +129,55 @@ public class ScheduleController {
 		vo.setSeq(seq);
 		scService.updateQuest(vo);
 		return "mypage/mypageHome";
+		
+	}
+	
+	//영상통화 버튼
+	@RequestMapping("/videoCallButton")
+	@ResponseBody
+	public boolean videoCallButton(HttpServletRequest request, ScheduleVO vo) {
+		//오늘 날짜 구하기
+		Date date = new Date();
+		SimpleDateFormat dF = new SimpleDateFormat("yyyyMMddHHmmss");
+		String today = dF.format(date);
+		Long inToday = Long.parseLong(today);
+		
+		//로그인한 아이디를 mentorId와 menteeId에 저장
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		vo.setMenteeid(id);
+		vo.setMentorid(id);
+		
+		//id를 통회 스케줄 조회
+		List<Map> list = scService.getSearchMentoringDate(vo);
+		
+		
+		for(Map<String, Object> map:list) {
+			
+			 
+			for(String mapKey : map.keySet()) {
+				String start = (String) map.get("SCHEDULE_START");
+				String end = (String) map.get("SCHEDULE_END");
+				Long startInt = Long.parseLong(start);
+				Long endInt = Long.parseLong(end);
+				if(startInt <= inToday) {
+					System.out.println("startInt"+startInt);
+					  
+					  if(inToday <= endInt) {
+						  System.out.println("endInt"+endInt);
+						  return true;
+					  } else {continue;}
+					  
+					  
+				  } else {return false;}
+			}
+			  
+			 
+			
+			
+		} //end of for
+		return false;
+		
 		
 	}
 }

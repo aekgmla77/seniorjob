@@ -12,7 +12,9 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +49,7 @@ public class UsersController {
 
 	@Inject
 	BCryptPasswordEncoder pwdEncoder;
+	
 
 	@RequestMapping("/getUsersList") // 전체조회
 	public String userstest(Model model) {
@@ -274,13 +277,25 @@ public class UsersController {
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 		List<Map> list = usersService.getCertiList(vo);
+		System.out.println("getCertiList:"+list);
+		
+		return list;
+	}
+	
+	@RequestMapping("/getCarList") //자격증, 경력인증서 조회
+	@ResponseBody
+	public List<Map> getCarList(UsersVO vo, HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		List<Map> list = usersService.getCarList(vo);
 		return list;
 	}
 	
 	//마이페이지에서 경력증명서 등록
 	@RequestMapping("/certiUpload")
 	public String certiUpload(
-		@RequestParam("uploadFile") MultipartFile[] files ,HttpServletRequest request, RedirectAttributes rttr ,Model model,UsersVO vo) throws Exception
+		@RequestParam("uploadFile") MultipartFile[] files ,HttpServletRequest request,Model model,UsersVO vo) throws Exception
 	{	
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
@@ -322,6 +337,43 @@ public class UsersController {
 		
 		return "/users/throughCerti";	
 	}
+	
+	//마이페이지에서 경력증명서 삭제
+	@RequestMapping("/delCareer")
+	public String certiDelete(UsersVO vo) {
+		UsersVO usersVo =  usersService.selCareer(vo);
+		String fileName = usersVo.getCarrer_certi();
+		new File("C:\\upload\\"+(fileName)).delete();  // 삭제
+		usersService.delCareer(vo);
+		return "redirect:/updateUsers";
+		
+	}
+	
+	//마이페이지 자격증 수정 폼
+	@RequestMapping("/updateCertiForm")
+	public String updateCertiForm(UsersVO vo, Model model) {
+		
+		model.addAttribute("cer", usersService.getCerti(vo));
+		return "/users/updatePopCerti";
+	}
+	
+	//마이페이지 자격증 수정처리
+	@RequestMapping("/updateCerti") 
+	public String updateCerti(UsersVO vo) {
+		
+		System.out.println("updateCerti:"+vo.getCerti_date());
+		usersService.updateCerti(vo);
+		return "/users/throughCerti";
+	}
+	
+	//마이페이지에서 자격증 삭제
+		@RequestMapping("/deleteCerti")
+		public String deleteCerti(UsersVO vo) {
+			usersService.delCareer(vo);
+			return "redirect:/updateUsers";
+			
+		}
+				
 
 	
 
