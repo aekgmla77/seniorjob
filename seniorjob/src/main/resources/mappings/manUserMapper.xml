@@ -14,7 +14,7 @@
 		FROM V_USERS
 		WHERE 1=1  
 		<include refid="search"></include>
-		 
+		
 	</select>
 	
 <!--회원 검색 -->
@@ -23,6 +23,7 @@
 				<if test="searchType == 'name'.toString()">AND LOWER(NAME) LIKE LOWER('%' || #{keyword} || '%')</if>
 				<if test="searchType == 'id'.toString()">AND LOWER(ID) LIKE LOWER('%' || #{keyword} || '%')</if>
 				<if test="searchType == 'auth'.toString()">AND LOWER(AUTH) LIKE LOWER('%' || #{keyword} || '%')</if>
+				<if test="searchType == 'mentor_date'.toString()">AND MENTOR_DATE LIKE('%' || #{keyword} || '%')</if>
 		</if>
 	</sql>
 	
@@ -30,17 +31,16 @@
 <select id="userList" resultType="com.company.manager.user.userVO" parameterType="com.company.manager.user.userVO">
 	SELECT *
 	FROM (SELECT id, address, phonenum, email, birth, auth, name, log_date,
-	mentor_career_certificate,  distinction,
+	mentor_career_certificate,  distinction, mentor_date,
 	ROW_NUMBER() OVER(ORDER BY id DESC) AS RNUM
 	FROM V_USERS where 1=1 <include refid="search"></include>)
 	V_USERS WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd} 
-	
-	ORDER BY ID DESC
+	ORDER BY MENTOR_DATE DESC
 </select>	
   
  <!-- 회원 단건 조회 -->
  <select id="getUserList" parameterType="com.company.manager.user.userVO" resultType="com.company.manager.user.userVO">
- 	SELECT USERS.*, MENTOR.MENTOR_CAREER_CERTIFICATE
+ 	SELECT USERS.*, MENTOR.MENTOR_CAREER_CERTIFICATE, MENTOR.MENTOR_DATE
 	FROM USERS LEFT OUTER JOIN MENTOR 
 	ON USERS.ID = MENTOR.ID
 	WHERE USERS.ID = #{id}
@@ -74,4 +74,10 @@
  	WHERE ID = #{id}
  </update>
  
+ <!-- 현재 당일 멘토 신청한 회원 수 -->
+ <select id="mentorSys" parameterType="com.company.manager.user.userVO" resultType="int">
+ SELECT COUNT(MENTOR_DATE) 
+ FROM V_USERS
+ WHERE MENTOR_DATE = SYSDATE
+ </select>
  </mapper>

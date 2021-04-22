@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
@@ -14,8 +15,8 @@
 	<div class="page-title">
 		<div class="row">
 			<div class="col-12 col-md-6 order-md-1 order-last">
-				<h3>회원관리</h3>
-				<p class="text-subtitle text-muted">전체 회원을 볼 수 있는 목록 페이지입니다.</p>
+				<h3>회원 관리(멘토 승급)</h3>
+				<p class="text-subtitle text-muted">전체 회원을 확인 또는 멘토 승급 목록 페이지입니다.</p>
 			</div>
 			<div class="col-12 col-md-6 order-md-2 order-first">
 				<nav aria-label="breadcrumb" class='breadcrumb-header'>
@@ -30,6 +31,9 @@
 	<section class="section">
 		<div class="card">
 			<div class="card-header">회원 데이터 테이블</div>
+			<div>
+				<span style="float:right;">현재 ${mensys} 명 의 회원이 멘토로 승급을 기다리고 있습니다.</span> 
+			</div>
 			<div class="card-body">
 				<div class="dataTable-search">
 				<form role="form" method="get">
@@ -41,7 +45,9 @@
 						      <option value="name"<c:out value="${scri.searchType eq 'name' ? 'selected' : ''}"/>>이름</option>
 						      <option value="id"<c:out value="${scri.searchType eq 'id' ? 'selected' : ''}"/>>ID</option>
 						      <option value="auth"<c:out value="${scri.searchType eq 'auth' ? 'selected' : ''}"/>>회원등급</option>
+						      <option value="mentor_date"<c:out value="${scri.searchType eq 'mentor_date' ? 'selected' : ''}"/>>멘토 신청일자</option>
                         </select>
+                        
 							<div class="input-group">
                              <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center; height:45px; width: 230px; flex:unset;" type="text" placeholder="내용 입력 ">&nbsp;
                              <span class="input-group-btn">
@@ -62,10 +68,9 @@
 							<th>ID</th>
 							<th>회원 이름</th>
 							<th>회원 전화번호</th>
-							<!--<th>회원 주소</th>-->
-							<th>생일</th>
 							<th>회원 이메일</th>
 							<th>경력증명서</th>
+							<th>멘토신청일자</th>
 							<th>회원등급</th>
 							<th>소셜닉네임</th>
 							<th>승급</th>
@@ -79,10 +84,9 @@
 								<td>${users.id }</td>
 								<td>${users.name }</td>
 								<td>${users.phonenum }</td>
-								<!-- <td>${users.address }</td> -->
-								<td>${users.birth }</td>
 								<td>${users.email }</td>
 								<td>${users.mentor_career_certificate}</td>
+								<td><fmt:formatDate value="${users.mentor_date }" pattern="yy/MM/dd" /></td>
 								<td>${users.auth}</td>
 								<td>${users.distinction}</td>
 								<td>

@@ -92,4 +92,12 @@ public class manUserController {
 
 	}
 	
+	////현재 당일 멘토 신청한 회원 수
+	@RequestMapping("/mentorSys")
+	public String mentorSys(userVO vo, Model model){
+	 model.addAttribute("mensys", manusermapper.mentorsys(vo));
+	System.out.println("mensys");
+	 return "manager/user";
+	}
+	
 }

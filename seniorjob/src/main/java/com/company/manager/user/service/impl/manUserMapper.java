@@ -24,6 +24,7 @@ public interface manUserMapper {
 	public void authUser(userVO vo);
 	//회원 강등
 	public void authDownUser(userVO vo);
-	
+	//현재 당일 멘토 신청한 회원 수
+	public int mentorsys(userVO vo);
 	
 }

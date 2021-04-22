@@ -64,6 +64,12 @@ public class UserServiceImpl implements UserService {
 	
 	}
 
+	@Override
+	public int mentorSys(userVO vo) {
+		
+		return dao.mentorsys(vo);
+	}
+
 	
 
 	
