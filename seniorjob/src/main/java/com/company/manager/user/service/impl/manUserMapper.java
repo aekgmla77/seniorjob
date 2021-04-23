@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.company.manager.user.userVO;
 import com.company.manager.utils.ManSearchCriteria;
+import com.company.mentor.service.MentorVO;
 
 
 public interface manUserMapper {
@@ -25,7 +26,7 @@ public interface manUserMapper {
 	public void authUser(userVO vo);
 	//회원 강등
 	public void authDownUser(userVO vo);
-	//이력서를 냈으나 USER 등급인 유저
+	//mentor 신청 대기자 수
 	public List<Map<String, Object>> mentorSys();
 	
 }

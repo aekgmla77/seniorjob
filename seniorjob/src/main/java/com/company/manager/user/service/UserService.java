@@ -23,7 +23,7 @@ public interface UserService {
 		public void authUser(userVO vo);
 		//회원 강등
 		public void authDownUser(userVO vo);
-		//이력서를 냈으나 USER 등급인 유저
+		//mentor 신청 대기자 수
 		public List<Map<String, Object>> mentorSys();	
 	
 }

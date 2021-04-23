@@ -27,4 +27,10 @@ public interface MentorMapper {
 	
 	public String getMentorName(String menId);//멘토 이름 ㅈ회
 
+	//정병기---------------------------------------------------------
+	//멘토 상태 승급
+	public void authMento(MentorVO mvo);
+	//멘토 상태 강등
+	public void authDownMento(MentorVO mvo);
+	
 }

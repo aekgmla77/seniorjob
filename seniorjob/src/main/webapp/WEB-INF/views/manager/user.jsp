@@ -32,8 +32,8 @@
 	<section class="section">
 		<div class="card">
 			<div class="card-header">회원 데이터 테이블</div>
-				<div>
-					<span id="mensyscount" style="float:right;">현재 ${mensys} 명 의 회원이 멘토로 승급을 기다리고 있습니다.</span> 
+				<div id="countmentor">
+					<span id="mensyscount" style="float:right;"></span> 
 				</div>
 			<div class="card-body">
 				<div class="dataTable-search">
@@ -46,7 +46,7 @@
 						      <option value="name"<c:out value="${scri.searchType eq 'name' ? 'selected' : ''}"/>>이름</option>
 						      <option value="id"<c:out value="${scri.searchType eq 'id' ? 'selected' : ''}"/>>ID</option>
 						      <option value="auth"<c:out value="${scri.searchType eq 'auth' ? 'selected' : ''}"/>>회원등급</option>
-						      <option value="mentor_date"<c:out value="${scri.searchType eq 'mentor_date' ? 'selected' : ''}"/>>멘토 신청일자</option>
+						      <option value=""<c:out value="${scri.searchType eq '' ? 'selected' : ''}"/>>멘토 승급 대기자</option>
                         </select>
                         
 							<div class="input-group">
@@ -63,7 +63,7 @@
 						
 				<br>
 				
-				<table class='table table-striped' style="font-size: 11px;" id="table1">
+				<table class='table table-striped' style="font-size: 10px;" id="table1">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -72,6 +72,7 @@
 							<th>회원 이메일</th>
 							<th>경력증명서</th>
 							<th>멘토신청일자</th>
+							<th>멘토신청상태</th>
 							<th>회원등급</th>
 							<th>소셜닉네임</th>
 							<th>승급</th>
@@ -88,6 +89,7 @@
 								<td>${users.email }</td>
 								<td>${users.mentor_career_certificate}</td>
 								<td><fmt:formatDate value="${users.mentor_date }" pattern="yy/MM/dd" /></td>
+								<td>${users.mentor_confirm_status}</td>
 								<td>${users.auth}</td>
 								<td>${users.distinction}</td>
 								<td>
@@ -427,17 +429,27 @@ $(function(){
 	$("#btnAuth").on('click', function(event){
 		console.log(event);
 		let idx = $('#authSpan').html();
-		$.ajax({
-			url: 'authUser',
-			type : 'GET',
-			data : {"id":idx},
-			dataType : 'text',
-			success : function(result){
-				location.reload();
-			
-			} 
-			
-		})
+		var makeAjax = function(url, result){
+		
+			$.ajax({
+				url: url,
+				type : 'POST',
+				data : {"id":idx},
+				dataType : 'text',
+				success : function(result){
+					location.reload();
+				
+				} 
+				
+			});
+		};
+				makeAjax(
+					'authUser',
+					makeAjax(
+						'authMento',
+						function(){}
+						)
+				);
 	})
 	
 	<!--회원 강등 modal click-->
@@ -448,38 +460,57 @@ $(function(){
 	});
 	
 	<!-- 회원 강등 modal 창-->
+	
 	$("#btnDownAuth").on('click', function(event){
 		console.log(event);
 		let idx = $('#authDownSpan').html();
-		$.ajax({
-			url: 'authDownUser',
-			type : 'GET',
-			data : {"id":idx},
-			dataType : 'text',
-			success : function(result){
-				location.reload();
-			
-			} 
-			
-		})
+		var makeAjax = function(url, result){
+			$.ajax({
+				url: url,
+				type : 'POST',
+				data : {"id":idx},
+				dataType : 'text',
+				success : function(result){
+					location.reload();
+				
+				} 
+				
+			});
+		};
+				makeAjax(
+						'authDownUser',
+						makeAjax(
+							'authDownMento',
+							function(){}
+							)
+					);
 	})
 	
 	<!-- 이력서를 냈으나 USER 등급인 유저 -->
-	$("#mensyscount").ready(function(event){
+	$("#mensyscount").ready(function(){
+	
 		$.ajax({
 			url: 'mentorSys',
+			async : false, 
 			type : 'get',
 			dataType : 'json',
 			success : function(response){
-				console.log(response);
+				console.log(response[0].COUNTAUTH);
+				var scount = response[0].COUNTAUTH;
+				if(scount != 0){		
+					$('#mensyscount').text("현재 멘토 승급 대기 인원수:" + response[0].COUNTAUTH + "명");
+					
+				}else{
+					$('#mensyscount').text("현재 신청한 사람이 없습니다.");
+				} 
 				
-			}
+				}
+				
+			})
 		})
-	})
+	});
 	
-	
-	
-});
+
 
 <!--검색-->
 	
