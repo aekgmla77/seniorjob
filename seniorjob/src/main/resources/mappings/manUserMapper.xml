@@ -74,10 +74,10 @@
  	WHERE ID = #{id}
  </update>
  
- <!-- 현재 당일 멘토 신청한 회원 수 -->
- <select id="mentorSys" parameterType="com.company.manager.user.userVO" resultType="int">
- SELECT COUNT(MENTOR_DATE) 
+ <!-- 이력서를 냈으나 USER 등급인 유저 -->
+ <select id="mentorSys" resultType="map">
+ SELECT COUNT(MENTOR_CAREER_CERTIFICATE) 
  FROM V_USERS
- WHERE MENTOR_DATE = SYSDATE
+ WHERE AUTH = 'USER'
  </select>
  </mapper>

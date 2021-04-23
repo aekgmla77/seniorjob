@@ -1,6 +1,7 @@
 package com.company.manager.user.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,9 +66,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int mentorSys(userVO vo) {
+	public List<Map<String, Object>> mentorSys() {
 		
-		return dao.mentorsys(vo);
+		return dao.mentorSys();
 	}
 
 	

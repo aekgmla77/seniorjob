@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.poi.util.SystemOutLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -92,12 +93,12 @@ public class manUserController {
 
 	}
 	
-	////현재 당일 멘토 신청한 회원 수
+	//이력서를 냈으나 USER 등급인 유저
+	@ResponseBody
 	@RequestMapping("/mentorSys")
-	public String mentorSys(userVO vo, Model model){
-	 model.addAttribute("mensys", manusermapper.mentorsys(vo));
-	System.out.println("mensys");
-	 return "manager/user";
+	public List<Map<String, Object>> mentorSys(){
+		System.out.println("mentorSys");
+		 return manusermapper.mentorSys();
 	}
 	
 }

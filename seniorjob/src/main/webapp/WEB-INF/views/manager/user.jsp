@@ -14,6 +14,7 @@
 <div class="main-content container-fluid">
 	<div class="page-title">
 		<div class="row">
+		
 			<div class="col-12 col-md-6 order-md-1 order-last">
 				<h3>회원 관리(멘토 승급)</h3>
 				<p class="text-subtitle text-muted">전체 회원을 확인 또는 멘토 승급 목록 페이지입니다.</p>
@@ -31,9 +32,9 @@
 	<section class="section">
 		<div class="card">
 			<div class="card-header">회원 데이터 테이블</div>
-			<div>
-				<span style="float:right;">현재 ${mensys} 명 의 회원이 멘토로 승급을 기다리고 있습니다.</span> 
-			</div>
+				<div>
+					<span id="mensyscount" style="float:right;">현재 ${mensys} 명 의 회원이 멘토로 승급을 기다리고 있습니다.</span> 
+				</div>
 			<div class="card-body">
 				<div class="dataTable-search">
 				<form role="form" method="get">
@@ -462,6 +463,21 @@ $(function(){
 			
 		})
 	})
+	
+	<!-- 이력서를 냈으나 USER 등급인 유저 -->
+	$("#mensyscount").ready(function(event){
+		$.ajax({
+			url: 'mentorSys',
+			type : 'get',
+			dataType : 'json',
+			success : function(response){
+				console.log(response);
+				
+			}
+		})
+	})
+	
+	
 	
 });
 
