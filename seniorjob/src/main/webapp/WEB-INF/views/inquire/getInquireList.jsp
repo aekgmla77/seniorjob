@@ -179,6 +179,12 @@ button.btn.btn-primary.green {
     margin-top: -48px;
     margin-left: 9px;
 }
+input#input1_2 {
+    margin-left: -13px;
+}
+th#th23 {
+    width: 123px;
+}
 </style>
 <body>
 	<!-- property area -->
@@ -205,22 +211,22 @@ button.btn.btn-primary.green {
 					<!--목록 게시판  -->
 					<table class="table table-striped" id="example">
 						<tr>
-							<th>번호</th>
-							<th>구분</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>상태</th>
+							<th style="text-align: center;">번호</th>
+							<th style="text-align: center;">구분</th>
+							<th style="text-align: center;">제목</th>
+							<th style="text-align: center;">작성자</th>
+							<th style="text-align: center;">작성일</th>
+							<th style="text-align: center;" id="th23">상태</th>
 						</tr>
 						<c:if test="${not empty list}">
 						<c:forEach items="${list }" var="b">
 							<tr>
-								<td onclick="location.href='getInquire?seq=${b.seq}'">${b.seq}</td>
-								<td onclick="location.href='getInquire?seq=${b.seq}'">${b.category_a }</td>
+								<td style="text-align: center;"onclick="location.href='getInquire?seq=${b.seq}'">${b.seq}</td>
+								<td style="text-align: center;"onclick="location.href='getInquire?seq=${b.seq}'">${b.category_a }</td>
 								<td onclick="location.href='getInquire?seq=${b.seq}'">${b.title }</td>
-								<td onclick="location.href='getInquire?seq=${b.seq}'">${b.id }</td>
-								<td onclick="location.href='getInquire?seq=${b.seq}'"><fmt:formatDate value="${b.w_date }" pattern="yyyy-MM-dd"/></td>
-								<td>
+								<td style="text-align: center;"onclick="location.href='getInquire?seq=${b.seq}'">${b.id }</td>
+								<td style="text-align: center;"onclick="location.href='getInquire?seq=${b.seq}'"><fmt:formatDate value="${b.w_date }" pattern="yyyy-MM-dd"/></td>
+								<td style="text-align: center;">
 								<c:if test="${b.status eq '답변완료'}">
 								<button type="button" id="#" onclick="click_seq()" class="btn btn-primary" data-toggle="modal" data-target="#myModal">답변확인</button>
 								</c:if>

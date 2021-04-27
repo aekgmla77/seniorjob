@@ -149,6 +149,9 @@ div#mtStartDate {
 #search {
     margin: 110px;
 }
+.active, .dot:hover {
+    background-color: white;
+}
 /* 이미지 슬라이드 */
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -204,45 +207,6 @@ div#mtStartDate {
         <div class="text">ACNE STUDIO</div>
       </div>
 
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-        <div class="text">ACNE STUDIO</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-        <div class="text">ACNE STUDIO</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">4 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-        <div class="text">ACNE STUDIO</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">5 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-        <div class="text">ACNE STUDIO</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">6 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-        <div class="text">ACNE STUDIO</div>
-      </div>
 	</c:forEach>
       <!-- Next and previous buttons -->
       <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
@@ -273,7 +237,7 @@ div#mtStartDate {
 							<div class="col-md-4 p0">
 							<c:forEach var="mentoring" items="${list }">
 							<form id="frm" name="frm" action="getSearchMentoringChanGon">
-							<div id="mentorList">
+							<div id="mentorList" onclick="location.href='getSearchMentoringChanGon?mentor_id=${mentoring.mentor_id }&mentoring_number=${mentoring.mentoring_number }&mentoring_kind=${mentoring.mentoring_kind }&mentoring_begin_date=${mentoring.mentoring_begin_date }&mentoring_end_date=${mentoring.mentoring_end_date }'">
 							<input type="hidden" id="mentor_id" name="mentor_id" value="${mentoring.mentor_id }">
 							<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
 							<input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${mentoring.mentoring_kind }">
@@ -281,7 +245,7 @@ div#mtStartDate {
 							<input type="hidden" id="mentoring_end_date" name="mentoring_end_date" value="${mentoring.mentoring_end_date }">
 								<div class="box-two proerty-item">
 									<div class="item-thumb">
-										<img src="image/${mentoring.mentoring_photo }">
+										<img src="image/${mentoring.mentoring_photo }" id="imgd">
 									</div>
 									<div class="item-entry overflow">
 										<h5>	
@@ -292,9 +256,6 @@ div#mtStartDate {
 											class="proerty-price pull-right">멘토링 가격: ${mentoring.mentoring_price }원</span>
 										<p style="display: none;">${mentoring.mentoring_begin_date }</p>
 										<p style="display: none;">${mentoring.mentoring_introduce }</p>
-											<div class="dealer-action p	ull-right">
-												<input type="submit" value="상세보기">
-											</div>
 									</div>
 								</div>
 								</div>
