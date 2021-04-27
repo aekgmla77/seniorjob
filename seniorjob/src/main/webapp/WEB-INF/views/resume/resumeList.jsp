@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html class="no-js"> 
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	function delRe(str){
@@ -25,6 +24,12 @@
 	}
 	
 </script>
+<style>
+p.read-more {
+    padding-left: 180px;
+}
+
+</style>
 <jsp:include page="../topHeader.jsp" />
 
 <body>
@@ -42,7 +47,7 @@
 				
 				<button type="button" class="btn btn-primary" onclick="resumeSom()">이력서 등록</button>
 				
-						<form action="" method="post" name="frm">  
+				<form action="" method="post" name="frm">  
 				
 				<c:forEach  var="resume" items="${list}">
 				
@@ -57,19 +62,19 @@
 									<div class="title-line wow fadeInRight animated"></div>
 								</div>
 
-								<div class="row">
-									
+								<div class="rowss">
 									
 								</div>
+									<p class="read-more">
+										<a onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">수정</a>
+										<a onclick="delRe('${resume.resume_no}')" class="btn btn-default btn-border">삭제</a>
+										<a onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">인쇄/PDF</a>
+	<%-- 									<a onclick="location.href='resumeWord?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">WORD 변환</a>  --%>
+										<a onclick="ckRe('${resume.resume_no}')" class="btn btn-default btn-border">첨삭요청</a>
+										<a onclick="location.href='seeCkRe?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">첨삭보기</a>
+									</p>
+									
 								
-								<p class="read-more">
-									<a onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">수정</a>
-									<a onclick="delRe('${resume.resume_no}')" class="btn btn-default btn-border">삭제</a>
-									<a onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">인쇄/PDF</a>
-									<a onclick="location.href='resumeWord?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">WORD 변환</a> 
-									<a onclick="ckRe('${resume.resume_no}')" class="btn btn-default btn-border">첨삭요청</a>
-									<a onclick="location.href='seeCkRe?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">첨삭보기</a>
-								</p>
 							</section>
 							<hr>
 
@@ -79,7 +84,7 @@
 					</div>
 					</c:if>
 				</c:forEach>
-                            </form>
+               </form>
 				
 			</div>
 			<!-- row end -->

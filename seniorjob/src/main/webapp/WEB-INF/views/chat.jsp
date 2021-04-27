@@ -52,7 +52,7 @@ button {
 			
 			
 			//웹소켓 객체 만드는 코드
-			ws = new WebSocket("ws://192.168.0.56/tenp/echo");
+			ws = new WebSocket("ws://192.168.0.56/echo");
 			
 			ws.onopen = function(event){
 				if(event.data === undefined){
@@ -85,7 +85,7 @@ button {
 		
 		/* 대화 입력 */
 		function writeResponse(text){
-			realM.innerHTML += "<hr/>" + text;
+			realM.innerHTML += "<br/>" + text;
 		}
 		
 		/* 대화내용 지우기 */

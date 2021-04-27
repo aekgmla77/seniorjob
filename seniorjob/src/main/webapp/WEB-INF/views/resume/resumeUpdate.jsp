@@ -93,7 +93,7 @@
 </script>
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <style>
-	.select_img img{width: 90px; height:90px; margin:20px 0;}
+	.select_img img{width: 250px; height:200px; margin:20px 0;}
 </style>
     <body>
         <!-- property area -->

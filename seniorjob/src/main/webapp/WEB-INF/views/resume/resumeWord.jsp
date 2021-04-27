@@ -1,13 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" --%>
+<%--     pageEncoding="UTF-8"%>  --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">  
-    <!-- ÏõåÎìúÌååÏùºÏù¥ Íπ®ÏßÄÎäî Ïò§Î•òÍ∞Ä ÏûàÏùå. -->
-<% 
-	response.setHeader("Content-Disposition", "attachment;filename=member.doc");
-	response.setHeader("Content-Description", "JSP Generated Data");	
-	response.setContentType("application/vnd.ms-word; charset=euc-kr");                                        
-%>  
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">   -->
+    <!-- øˆµÂ∆ƒ¿œ¿Ã ±˙¡ˆ¥¬ ø¿∑˘∞° ¿÷¿Ω. -->
+<%@ page language="java" contentType="application/vnd.word; charset=euc-kr"%>
+    response.setHeader("Content-Description", "JSP Generated Data");  
+    response.setHeader("Content-Disposition", "attachment;filename=ServieRequestList.doc");
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -23,28 +22,28 @@
                     <div class="col-md-8 col-md-offset-2"> 
                         <div class="" id="contact1">                        
                             <!-- /.row -->
-                            <div align="center"><h2>Ïù¥Î†•ÏÑú</h2></div>
+                            <div align="center"><h2>¿Ã∑¬º≠</h2></div>
                             <hr>
                             <form name="frm">
                             	
                                 <div class="row" id="printIs">
                            		   <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>ÏÇ¨ÏßÑ</label>
+                                            <label>ªÁ¡¯</label>
                                             <%-- <img src="{path}/image/${resumeVO.image }">
                                             <input type="file" id="image" name="image"> --%>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Ïù¥Î¶Ñ</label>
+                                            <label>¿Ã∏ß</label>
                                             <input type="text" class="form-control" id="resume_name" name="resume_name" value=${resumeVO.resume_name }>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>ÏÉùÎÖÑÏõîÏùº</label>
+                                            <label>ª˝≥‚ø˘¿œ</label>
                                             <input type="text" class="form-control" id="resume_birth" name="resume_birth" value=${resumeVO.resume_birth }>
                                         </div>
                                     </div>
@@ -56,120 +55,120 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Ìú¥ÎåÄÌè∞ Î≤àÌò∏</label>
+                                            <label>»ﬁ¥Î∆˘ π¯»£</label>
                                             <input type="text" class="form-control" id="resume_phone" name="resume_phone" value=${resumeVO.resume_phone }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Ï£ºÏÜå</label>
+                                            <label>¡÷º“</label>
                                             <input type="text" class="form-control" id="resume_address" name="resume_address" value=${resumeVO.resume_address }>
                                         </div>
                                     </div>
 									<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                                    <h3>ÌïôÎ†•ÏÇ¨Ìï≠</h3>
+                                    <h3>«–∑¬ªÁ«◊</h3>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>ÌïôÍµêÎ™Ö</label>
+                                            <label>«–±≥∏Ì</label>
                                             <input type="text" class="form-control" id="resume_school" name="resume_school" value=${resumeVO.resume_school }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>ÏßÄÏó≠</label>
+                                            <label>¡ˆø™</label>
                                             <input type="text" class="form-control" id="resume_area" name="resume_area" value=${resumeVO.resume_area }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>ÏûÖÌïôÏùº</label>
+                                            <label>¿‘«–¿œ</label>
                                             <input type="text" class="form-control" id="resume_start" name="resume_start" value=${resumeVO.resume_start }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Ï°∏ÏóÖÏùº</label>
+                                            <label>¡πæ˜¿œ</label>
                                             <input type="text" class="form-control" id="resume_end" name="resume_end" value=${resumeVO.resume_end }>
                                         </div>
                                     </div>
                                     <br><br><br><br><br><br><br><br><br>
-                                    <h3>ÏûêÍ≤©Ï¶ù</h3>
+                                    <h3>¿⁄∞›¡ı</h3>
                                     <c:forEach items="${clist}" var="certi"> 
                                     <input type="hidden" id="certi_no" name="certi_no" value=${certi.certi_no }>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                        	<label>ÏûêÍ≤©Ï¶ù Ìï≠Î™©</label>
+                                        	<label>¿⁄∞›¡ı «◊∏Ò</label>
                                             <select id = "certi_kinds" name = "certi_kinds" value=${certi.certi_kinds }>
 												<option value="IT" <c:if test="${certi.certi_kinds  eq 'IT' }">selected</c:if>>IT</option>
-												<option value="ÏÑ∏Î¨¥/ÌöåÍ≥Ñ" <c:if test="${certi.certi_kinds eq 'ÏÑ∏Î¨¥/ÌöåÍ≥Ñ' }">selected</c:if>>ÏÑ∏Î¨¥/ÌöåÍ≥Ñ</option>
-												<option value="Í±¥Ï∂ï" <c:if test="${certi.certi_kinds eq 'Í±¥Ï∂ï' }">selected</c:if>>Í±¥Ï∂ï</option>
-												<option value="ÎÜçÏóÖ" <c:if test="${certi.certi_kinds eq 'ÎÜçÏóÖ' }">selected</c:if>>ÎÜçÏóÖ</option>
-												<option value="ÎîîÏûêÏù∏" <c:if test="${certi.certi_kinds eq 'ÎîîÏûêÏù∏' }">selected</c:if>>ÎîîÏûêÏù∏</option>
-												<option value="Î≥¥Í±¥/ÏùòÎ£å" <c:if test="${certi.certi_kinds eq 'Î≥¥Í±¥/ÏùòÎ£å' }">selected</c:if>>Î≥¥Í±¥/ÏùòÎ£å</option>
-												<option value="Í∏∞Í≥ÑÏ†úÏûë" <c:if test="${certi.certi_kinds eq 'Í∏∞Í≥ÑÏ†úÏûë' }">selected</c:if>>Í∏∞Í≥ÑÏ†úÏûë</option>
-												<option value="Ï†ÑÍ∏∞" <c:if test="${certi.certi_kinds eq 'Ï†ÑÍ∏∞' }">selected</c:if>>Ï†ÑÍ∏∞</option>
-												<option value="Í∏∞ÌÉÄ" <c:if test="${certi.certi_kinds eq 'Í∏∞ÌÉÄ' }">selected</c:if>>Í∏∞ÌÉÄ</option>
+												<option value="ººπ´/»∏∞Ë" <c:if test="${certi.certi_kinds eq 'ººπ´/»∏∞Ë' }">selected</c:if>>ººπ´/»∏∞Ë</option>
+												<option value="∞«√‡" <c:if test="${certi.certi_kinds eq '∞«√‡' }">selected</c:if>>∞«√‡</option>
+												<option value="≥Ûæ˜" <c:if test="${certi.certi_kinds eq '≥Ûæ˜' }">selected</c:if>>≥Ûæ˜</option>
+												<option value="µ¿⁄¿Œ" <c:if test="${certi.certi_kinds eq 'µ¿⁄¿Œ' }">selected</c:if>>µ¿⁄¿Œ</option>
+												<option value="∫∏∞«/¿«∑·" <c:if test="${certi.certi_kinds eq '∫∏∞«/¿«∑·' }">selected</c:if>>∫∏∞«/¿«∑·</option>
+												<option value="±‚∞Ë¡¶¿€" <c:if test="${certi.certi_kinds eq '±‚∞Ë¡¶¿€' }">selected</c:if>>±‚∞Ë¡¶¿€</option>
+												<option value="¿¸±‚" <c:if test="${certi.certi_kinds eq '¿¸±‚' }">selected</c:if>>¿¸±‚</option>
+												<option value="±‚≈∏" <c:if test="${certi.certi_kinds eq '±‚≈∏' }">selected</c:if>>±‚≈∏</option>
 											</select>
                                         </div>
                                     </div>
 									 <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Ìï©Í≤©Íµ¨Î∂Ñ</label>
+                                            <label>«’∞›±∏∫–</label>
                                             <select name="accept" id="accept" value=${certi.accept }>
-												<option value="1Ï∞®Ìï©Í≤©" <c:if test="${certi.accept  eq '1Ï∞®Ìï©Í≤©' }">selected</c:if>>1Ï∞®Ìï©Í≤©</option>
-												<option value="2Ï∞®Ìï©Í≤©" <c:if test="${certi.accept  eq '2Ï∞®Ìï©Í≤©' }">selected</c:if>>2Ï∞®Ìï©Í≤©</option>
-												<option value="ÌïÑÍ∏∞Ìï©Í≤©" <c:if test="${certi.accept  eq 'ÌïÑÍ∏∞Ìï©Í≤©' }">selected</c:if>>ÌïÑÍ∏∞Ìï©Í≤©</option>
-												<option value="Ïã§Í∏∞Ìï©Í≤©" <c:if test="${certi.accept  eq 'Ïã§Í∏∞Ìï©Í≤©' }">selected</c:if>>Ïã§Í∏∞Ìï©Í≤©</option>
-												<option value="ÏµúÏ¢ÖÌï©Í≤©" <c:if test="${certi.accept  eq 'ÏµúÏ¢ÖÌï©Í≤©' }">selected</c:if>>ÏµúÏ¢ÖÌï©Í≤©</option>
+												<option value="1¬˜«’∞›" <c:if test="${certi.accept  eq '1¬˜«’∞›' }">selected</c:if>>1¬˜«’∞›</option>
+												<option value="2¬˜«’∞›" <c:if test="${certi.accept  eq '2¬˜«’∞›' }">selected</c:if>>2¬˜«’∞›</option>
+												<option value="« ±‚«’∞›" <c:if test="${certi.accept  eq '« ±‚«’∞›' }">selected</c:if>>« ±‚«’∞›</option>
+												<option value="Ω«±‚«’∞›" <c:if test="${certi.accept  eq 'Ω«±‚«’∞›' }">selected</c:if>>Ω«±‚«’∞›</option>
+												<option value="√÷¡æ«’∞›" <c:if test="${certi.accept  eq '√÷¡æ«’∞›' }">selected</c:if>>√÷¡æ«’∞›</option>
 											</select>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>ÏûêÍ≤©Ï¶ùÎ™Ö</label>
+                                            <label>¿⁄∞›¡ı∏Ì</label>
                                             <input type="text" class="form-control" id="certi_name" name="certi_name" value=${certi.certi_name }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Î∞úÌñâÏ≤ò/Í∏∞Í¥Ä</label>
+                                            <label>πﬂ«‡√≥/±‚∞¸</label>
                                             <input type="text" class="form-control" id="certi_place" name="certi_place" value=${certi.certi_place }>
                                         </div>
                                     </div>
                                    
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Ï∑®ÎìùÏùº</label>
+                                            <label>√ÎµÊ¿œ</label>
                                             <input type="text" class="form-control" id="certi_date" name="certi_date" value=${certi.certi_date }>
                                         </div>
                                     </div>
                                     </c:forEach>  
                                 	<br><br><br><br><br><br><br><br><br><br>
-									<h3>Ìè¨Ìä∏Ìè¥Î¶¨Ïò§</h3>
+									<h3>∆˜∆Æ∆˙∏Æø¿</h3>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label for="subject">Ìè¨Ìä∏Ìè¥Î¶¨Ïò§ Î∞è Í∏∞ÌÉÄÎ¨∏ÏÑú</label> <br>
+											<label for="subject">∆˜∆Æ∆˙∏Æø¿ π◊ ±‚≈∏πÆº≠</label> <br>
 											<c:forEach items="${plist }" var="port">
 											<input type="hidden" name="portfolio" id="portfolio" value="${port.portfolio }">${port.portfolio }<br>
 											</c:forEach>
 										</div>
 									</div>
 									<br><br><br><br><br><br><br><br>
-									<h3>ÏûêÍ∏∞ÏÜåÍ∞úÏÑú</h3>
+									<h3>¿⁄±‚º“∞≥º≠</h3>
 									<c:forEach items="${slist }" var="self">
 									<input type="hidden" id="self_no" name="self_no" value="${self.self_no }">
 									<div class="col-sm-10">
 										<div class="form-group">
-											<label for="subject">Ï†úÎ™©</label> 
-											<input type="text" class="form-control" id="self_name" name="self_name" placeholder="ÏûêÍ∏∞ÏÜåÍ∞úÏÑú Ï†úÎ™©" value=${self.self_name }>
+											<label for="subject">¡¶∏Ò</label> 
+											<input type="text" class="form-control" id="self_name" name="self_name" placeholder="¿⁄±‚º“∞≥º≠ ¡¶∏Ò" value=${self.self_name }>
 										</div>
 									</div>
 									<div class="col-sm-12">
 										<div class="form-group">
-											<label for="message">ÎÇ¥Ïö©</label>
+											<label for="message">≥ªøÎ</label>
 											<textarea id="self_content" name="self_content" class="form-control" 
-											placeholder="ÎÇ¥Ïö©ÏùÑ ÏûÖÎ†•ÌïòÏÑ∏Ïöî.">${self.self_content }</textarea>
+											placeholder="≥ªøÎ¿ª ¿‘∑¬«œººø‰.">${self.self_content }</textarea>
 										</div>
 									</div>
 									</c:forEach>

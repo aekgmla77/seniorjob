@@ -322,11 +322,6 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                                     <img src="image/${mentor.mentor_photo }" class="img-circle">
                                                 </a>
                                             </div>
-                                            <div class="col-xs-8 col-sm-8 ">
-                                                <h3 class="dealer-name">
-                                                    <span>${mentor.usersVO.name }<b class="property-info-unit">멘토</b></span>        
-                                                </h3>
-                                            </div>
                                         </div>
 
                                         <div class="clear">
@@ -395,10 +390,10 @@ s                                     </c:forEach>
 //장바구니 담기
 function insertC(){
 	var yn = confirm("장바구니에 담으시겠습니까?");
-	var Frm = document.submitFrm;
+// 	var Frm = document.submitFrm;
 	if(yn){
-		Frm.action = "insertCart";
-		Frm.submit();
+		submitFrm.action = "insertCart";
+		submitFrm.submit();
 	}
 }
 

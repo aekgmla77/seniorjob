@@ -34,8 +34,6 @@ public class CartController {
 	public String insertCart(HttpServletRequest req, CartVO vo, HttpSession session, MentoringVO mentovo, Model model) {
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
-		String mentor_id = req.getParameter("mentor_id");
-		vo.setMentor_id(mentor_id);
 		int result = cartservice.countCart(vo);    //중복체크(동일한 상품이면 담기지 않음)
 		if(result == 0) {
 			cartservice.insertCart(vo);
