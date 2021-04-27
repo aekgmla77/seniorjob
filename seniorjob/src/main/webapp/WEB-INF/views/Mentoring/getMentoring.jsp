@@ -265,7 +265,10 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                             <!-- End video area  -->
                             <!-- =================================멘토링 후기=================================================== -->
                             <div class="section property-features" id="reviewsList">    
-                                <h4 class="s-property-title">멘토링 후기</h4> 
+                                <h4 class="s-property-title">멘토링 후기</h4>
+<%--                                 <c:if test="${empty list }"> --%>
+<!--                                 	멘토링 후기가 없습니다. 작성해주세요! -->
+<%--                                 </c:if>  --%>
                                 <div id="reviewss" style="display:none">
                                 <div class="score_reple" >
                                 <span id="seq"></span>
