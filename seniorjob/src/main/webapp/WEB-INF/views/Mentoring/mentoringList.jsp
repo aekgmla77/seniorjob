@@ -29,32 +29,25 @@ h1{text-align:center}
 	font-family:'Spoqa Han Sans'; 
 	font-weight: 300;
 }
-
 input#searchKeyword {
     margin: 30px;
     height: 60px;
 }
-
-
-
 /* 이미지 슬라이드 */
-
 /* Slideshow container */
 .slideshow-container {
-  max-width: 700px;
-  max-height: 500px;
+  max-width: 260px;
+  max-height: 200px;
   position: relative;
   margin: auto;
 }
 .slideshow-container .mySlides img {
   height: 300px;
 }
-
 /* Hide the images by default */
 .mySlides {
   display: none;
 }
-
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
@@ -70,18 +63,15 @@ input#searchKeyword {
   border-radius: 0 3px 3px 0;
   user-select: none;
 }
-
 /* Position the "next button" to the right */
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
-
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
 }
-
 /* Caption text */
 .text {
   color: #f2f2f2;
@@ -92,7 +82,6 @@ input#searchKeyword {
   width: 100%;
   text-align: center;
 }
-
 /* Number text (1/3 etc) */
 .numbertext {
   color: #f2f2f2;
@@ -101,7 +90,6 @@ input#searchKeyword {
   position: absolute;
   top: 0;
 }
-
 /* The dots/bullets/indicators */
 .dot {
   cursor: pointer;
@@ -113,11 +101,9 @@ input#searchKeyword {
   display: inline-block;
   transition: background-color 0.6s ease;
 }
-
 .active, .dot:hover {
   background-color: #717171;
 }
-
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
@@ -125,12 +111,10 @@ input#searchKeyword {
   animation-name: fade;
   animation-duration: 1.5s;
 }
-
 @-webkit-keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
 }
-
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
@@ -149,8 +133,25 @@ div#mtStartDate {
 #search {
     margin: 110px;
 }
-.active, .dot:hover {
-    background-color: white;
+element.style {
+    transform: translateX(406px);
+}
+#nudge_wrap {
+    width: 260px;
+    position: fixed;
+    top: 250px;
+    right: 80%;
+    margin-left: 100px;
+}
+#nudge_wrap2 {
+    width: 260px;
+    position: fixed;
+    top: 350px;
+    left: 70%;
+    margin-left: 100px;
+}
+.col-md-9.pr-30.padding-top-40.properties-page.user-properties {
+    left: 123px;
 }
 /* 이미지 슬라이드 */
 </style>
@@ -160,14 +161,11 @@ div#mtStartDate {
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
-<c:if test="${not empty list }">
+<%-- <c:if test="${not empty list }">
 	<h1 class="display-4" id="mainCopy">현직자 멘토와 함께 직무경험을 쌓아보세요!</h1>
 	<footer class="blockquote-footer" style="text-align:center">아래 원하는 멘토링을 클릭하면 해당 멘토링 상세 정보 확인이 가능합니다.</footer>
-</c:if>
-<c:if test="${empty list }">
-	<h1 class="display-4" id="mainCopy">찾으시는 멘토링 정보가 없습니다.</h1>
-	<button class="btn btn-primary" onclick="history.back(-1)" style="margin:auto; display:block;">뒤로가기</button>
-</c:if>
+</c:if> --%>
+
 	<!-- 멘토링 리스트 출력 -->
 	<br>
 	<!-- 페이징 & 검색 -->
@@ -192,45 +190,55 @@ div#mtStartDate {
 	</form>
 	<br>	
 	<!-- 이미지 슬라이드 -->
-	<div class="slideshow-container">
-      <!-- Full-width images with number and caption text -->
-      <c:forEach items="${random }" var="random">
-      <input type="hidden" id="mentor_id" name="mentor_id" value="${random.mentor_id }">
-	  <input type="hidden" id="mentoring_number" name="mentoring_number" value="${random.mentoring_number }">
-	  <input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${random.mentoring_kind }">
-	  <input type="hidden" id="mentoring_begin_date" name="mentoring_begin_date" value="${random.mentoring_begin_date }">
-	  <input type="hidden" id="mentoring_end_date" name="mentoring_end_date" value="${random.mentoring_end_date }">
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-      </div>
-
-	</c:forEach>
-      <!-- Next and previous buttons -->
-      <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
-      <a class="next" onclick="moveSlides(1)">&#10095;</a>
-    </div>
-    <br/>
-
-    <!-- The dots/circles -->
-    <div style="text-align:center">
-      <span class="dot" onclick="currentSlide(0)"></span>
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
-      <span class="dot" onclick="currentSlide(4)"></span>
-      <span class="dot" onclick="currentSlide(5)"></span>
-    </div>
+	<div id="nudge_wrap" style="transform: traslateX(42px);">
+		<div class="inner">
+			<div id="order_list" class="box_change_order">
+			<div class="slideshow-container">
+		      <!-- Full-width images with number and caption text -->
+		      <c:forEach items="${random }" var="random">
+		      <input type="hidden" id="mentor_id" name="mentor_id" value="${random.mentor_id }">
+			  <input type="hidden" id="mentoring_number" name="mentoring_number" value="${random.mentoring_number }">
+			  <input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${random.mentoring_kind }">
+			  <input type="hidden" id="mentoring_begin_date" name="mentoring_begin_date" value="${random.mentoring_begin_date }">
+			  <input type="hidden" id="mentoring_end_date" name="mentoring_end_date" value="${random.mentoring_end_date }">
+		      <div class="mySlides fade">
+		        <div class="numbertext">1 / 6</div>
+		        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
+		        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
+		        <div class="text">ACNE STUDIO</div>
+		      </div>
+		
+			</c:forEach>
+		      <!-- Next and previous buttons -->
+		      <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
+		      <a class="next" onclick="moveSlides(1)">&#10095;</a>
+		    </div>
+		    <br/>
+		
+		    <!-- The dots/circles -->
+		    <div style="text-align:center">
+		      <span class="dot" onclick="currentSlide(0)"></span>
+		      <span class="dot" onclick="currentSlide(1)"></span>
+		      <span class="dot" onclick="currentSlide(2)"></span>
+		      <span class="dot" onclick="currentSlide(3)"></span>
+		      <span class="dot" onclick="currentSlide(4)"></span>
+		      <span class="dot" onclick="currentSlide(5)"></span>
+		    </div>
+		    </div>
+	    </div>
+	</div>
 
 	<!-- 이미지 슬라이드 -->
 	
+	<c:if test="${empty list }">
+		<h1 class="display-4" id="mainCopy">찾으시는 멘토링 정보가 없습니다.</h1>
+		<button class="btn btn-primary" onclick="history.back(-1)" style="margin:auto; display:block;">뒤로가기</button>
+	</c:if>
 	
 	
 	<div class="content-area recent-property" style="background-color: #FFF;">
 		<div class="container">
-			<div class="row">
+			<div class="row" align="center">
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 					<div class="section">
 						<div id="list-type" class="proerty-th-list">
@@ -267,9 +275,8 @@ div#mtStartDate {
 					</div>
 				</div>
 				<!-- 플로팅 배너 -->
-				<div class="col-md-3 p0 padding-top-40" id="sidebar">
-					<div class="blog-asside-right">
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+				<div id="nudge_wrap2" style="transform: traslateX(42px);">
+					<div id="order_list2" class="box_change_order2">
 							<div class="panel-heading">
 								<h3 class="panel-title">멘토링 등록</h3>
 							</div>
@@ -290,12 +297,12 @@ div#mtStartDate {
 										
 									</div>
 								</div>
-								</div>
 							</form>
 						</div>
 					</div>
 				</div>
 				<!-- End of 플로팅 배너 -->
+				
 			</div>
 		</div>
 	</div>
@@ -331,16 +338,13 @@ div#mtStartDate {
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->		
-
 <script>
-
 //로그아웃 상태에서 멘토등록 클릭 시
 function loginCheck(){
 	if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
 		location.href = "login"; // 로그인 페이지로 이동
 	}
 }
-
 //멘토링 등록
 function MentoringRegister(){
 			var param = $('#id').val();
@@ -348,10 +352,8 @@ function MentoringRegister(){
 			mentorRegisterForm.action = "MentoringRegister?id="+param;
 			mentorRegisterForm.submit();
 		}
-
-
 /* 플로팅 배너 */
-$(function() {
+/* $(function() {
 	var offset = $("#sidebar").offset();
 	var topPadding = 300;
 	$(window).scroll(function() {
@@ -365,15 +367,13 @@ $(function() {
 			});
 		};
 	});
-});
+}); */
 /* 플로팅 배너 */
-
 //송다희 추가
 function goPage(p){
 	searchMen.page.value = p;
 	searchMen.submit();
 }
-
 $('#mentorSearchChkBoxBtn').click(function(){
 	var chkDutyArr = new Array();
 	$("input:checkbox[name='mentor_dutyArr']:checked").each(function(){
@@ -386,69 +386,52 @@ $('#mentorSearchChkBoxBtn').click(function(){
 		searchFrm.submit();
 	}
 });
-
 //페이징
 function goPage(p){
 	searchDateFrm.page.value = p;
 	searchDateFrm.submit();
 }
-
-
-
-
 /* 이미지 슬라이드 */
 var slideIndex = 0; //slide index
-
 //HTML 로드가 끝난 후 동작
 window.onload=function(){
 showSlides(slideIndex);
-
 // Auto Move Slide
 var sec = 3000;
 setInterval(function(){
  slideIndex++;
  showSlides(slideIndex);
-
 }, sec);
 }
-
-
 //Next/previous controls
 function moveSlides(n) {
 slideIndex = slideIndex + n
 showSlides(slideIndex);
 }
-
 //Thumbnail image controls
 function currentSlide(n) {
 slideIndex = n;
 showSlides(slideIndex);
 }
-
 function showSlides(n) {
-
 var slides = document.getElementsByClassName("mySlides");
 var dots = document.getElementsByClassName("dot");
 var size = slides.length;
-
 if ((n+1) > size) {
  slideIndex = 0; n = 0;
 }else if (n < 0) {
  slideIndex = (size-1);
  n = (size-1);
 }
-
 for (i = 0; i < slides.length; i++) {
    slides[i].style.display = "none";
 }
 for (i = 0; i < dots.length; i++) {
    dots[i].className = dots[i].className.replace(" active", "");
 }
-
 slides[n].style.display = "block";
 dots[n].className += " active";
 }
-
 </script>		
 </body>
 </html>
