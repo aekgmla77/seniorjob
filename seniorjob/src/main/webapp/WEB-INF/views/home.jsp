@@ -457,7 +457,15 @@ function chatt() {
 			if(keywordChk==""){
 				$('#myModal').modal().show();
 				return false;
-			}else if(keywordChk.indexOf('서울') >= 0 || keywordChk.indexOf('부산') >= 0|| keywordChk.indexOf('대구') >= 0 || keywordChk.indexOf('인천') >= 0 || keywordChk.indexOf('광주') >= 0 || keywordChk.indexOf('대전') >= 0 || keywordChk.indexOf('울산') >= 0 || keywordChk.indexOf('세종') >= 0){
+			}else if( keywordChk.indexOf('서울') >= 0 
+					|| keywordChk.indexOf('부산') >= 0
+					|| keywordChk.indexOf('대구') >= 0 
+					|| keywordChk.indexOf('인천') >= 0 
+					|| keywordChk.indexOf('광주') >= 0 
+					|| keywordChk.indexOf('대전') >= 0 
+					|| keywordChk.indexOf('울산') >= 0 
+					|| keywordChk.indexOf('세종') >= 0 ) {
+						
 				alert(keywordChk + " 지역 멘토를 검색합니다.");
 				searchFrm.action = "getKeywordSearch";
 				searchFrm.submit();
