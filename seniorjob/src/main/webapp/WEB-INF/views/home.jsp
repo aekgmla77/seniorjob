@@ -170,7 +170,7 @@ $(document).ready(function() {
 		url:'videoCallButton',
 		success : function(result) {
 			
-			if(result != "false") {
+			//if(result != "false") {
 				$("#numSom").attr('value',result);
 				var auth = $('#authSom').val();
 				var div = $('<div />').attr('id','slidemenu');
@@ -187,9 +187,9 @@ $(document).ready(function() {
 				$(div).append(a3);
 				$("#slidemenu").append(div);
 				
-			} else {
-				console.log("else");
-			}
+			//} else {
+			//	console.log("else");
+			//}
 		},
 		error : function() {
 			console.log("error");
