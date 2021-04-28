@@ -42,7 +42,14 @@
 <link rel="stylesheet" href="resources/assets/css/style.css">
 <link rel="stylesheet" href="resources/assets/css/responsive.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<script>
+	function sub(str){
+			var frm = document.frm;
+			var str = str;
+			$('#resume_no').attr("value",str);
+			frm.submit();
+		}
+</script>
 <style>
 th {
     text-align: center;

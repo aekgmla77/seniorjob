@@ -266,7 +266,7 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                             <!-- =================================멘토링 후기=================================================== -->
                             <div class="section property-features" id="reviewsList">    
                                 <h4 class="s-property-title">멘토링 후기</h4>
-<%--                                 <c:if test="${empty list }"> --%>
+<%--                                 <c:if test="${empty list and not users.id}"> --%>
 <!--                                 	멘토링 후기가 없습니다. 작성해주세요! -->
 <%--                                 </c:if>  --%>
                                 <div id="reviewss" style="display:none">

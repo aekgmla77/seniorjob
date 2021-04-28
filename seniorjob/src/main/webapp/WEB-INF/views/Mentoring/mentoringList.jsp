@@ -276,7 +276,7 @@ element.style {
 									</div>
 									<div class="item-entry overflow">
 										<h5>	
-											<a href="property-1.html">${mentoring.mentoring_name }</a>
+											<a onclick="location.href='getSearchMentoringChanGon?mentor_id=${mentoring.mentor_id }&mentoring_number=${mentoring.mentoring_number }&mentoring_kind=${mentoring.mentoring_kind }&mentoring_begin_date=${mentoring.mentoring_begin_date }&mentoring_end_date=${mentoring.mentoring_end_date }'">${mentoring.mentoring_name }</a>
 										</h5>
 										<div class="dot-hr"></div>
 										<span class="pull-left"><b style="color:#64C03C">${mentoring.mentoring_kind }</b></span> <span

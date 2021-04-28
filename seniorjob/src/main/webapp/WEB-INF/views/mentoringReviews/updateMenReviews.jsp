@@ -67,7 +67,7 @@
                                     <a onclick="updateR('${review.seq}')"> 등록하기</a>
                             </div>
                             <div class="col-sm-6 text-left">
-                                   <button class="btn btn-primary" onclick="return confirm('목록으로 돌아가시겠습니까?');"><i class="fa fa-reply"></i>
+                                   <a onclick="return confirm('목록으로 돌아가시겠습니까?');"><i class="fa fa-reply"></i></a>
                                
                                    		<!-- <a href="mentoringReviews">
                                    			목록으로
