@@ -92,7 +92,6 @@ button {
 		function clearText(){
 			console.log(messages.parentNode);
 			realM.innerHTML = '';
-// 			messages.parentNode.removeChild(messages);
 		}
 	</script>
 </body>
