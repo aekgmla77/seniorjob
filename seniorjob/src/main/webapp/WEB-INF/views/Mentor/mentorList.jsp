@@ -93,7 +93,6 @@
 						<c:if test="${not empty list }">
 							<c:forEach var="mentor" items="${list }">
 							<form name="mentorListFrm">
-								<%-- <div class="col-sm-6 col-md-4 p0" id="mentor_id" name="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'" > --%>
 								<div class="col-sm-6 col-md-4 p0" id="mentor_id" name="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'" style="cursor:pointer" >
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
@@ -225,11 +224,11 @@
 				var response = result.list;
 				$.each(response, function(i){
 				var div2 = $("<div>").attr({ 'id':"list-type",'class':"proerty-th" });
-				var div3 = $("<div>").attr({ 'class':"col-sm-6 col-md-4 p0",id:"mentor_id"}).data('id',response[i].mentor_id);
+				var div3 = $("<div>").attr({ 'class':"col-sm-6 col-md-4 p0",id:"mentor_id", "name":"mentor_id" }).data('id',response[i].mentor_id);
 				var div4 = $("<div>").attr("class", "box-two proerty-item");
-				var div5 = $("<div>").attr("class","item-thumb").append($("<img>").attr("src","image/"+response[i].mentor_photo));
+				var div5 = $("<div>").attr("class","item-thumb").append($("<img>").attr({"src":"image/"+response[i].mentor_photo, id:"myPhoto"}));
 				
-				var div6 = $("<div>").attr("class","item-entry overflow");
+				var div6 = $("<div>").attr({"class":"item-entry overflow",id:"mainContents"});
 				
 					var h5_1 = $("<h5>").attr("id","name").text(response[i].usersVO.name);
 						var bh_1 = $('<b>').attr('class','property-info-unit').text("멘토");
