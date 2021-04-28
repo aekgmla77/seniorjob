@@ -70,7 +70,6 @@
                                         <span class="property-info-value">3</span>
                                     </span>
                                 </div>
-
                                 <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
                                     <span class="property-info-icon icon-bath">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
@@ -82,7 +81,6 @@
                                         <span class="property-info-value">3.5</span>
                                     </span>
                                 </div>
-
                                 <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
                                     <span class="property-info-icon icon-garage">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
@@ -290,9 +288,6 @@
 				}
 			});
 		}
-		
-
-	
 	// 로그인 여부 확인
 	function loginCheck(){
 			if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
