@@ -70,6 +70,7 @@
 			ID,
 			MENTORING_AGE,
 			MENTORING_LOCATION,
+			MENTOR_CONFIRM_STATUS
 			MENTOR_DATE
 		)
 		VALUES(
@@ -86,6 +87,7 @@
 			#{id},
 			#{mentoring_age},
 			#{mentoring_location},
+			'대기',
 			sysdate
 		)
 	</insert>
