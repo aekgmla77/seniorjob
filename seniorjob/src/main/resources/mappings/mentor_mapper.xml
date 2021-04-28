@@ -153,25 +153,6 @@
 			MENTOR_ID = #{mentor_id}
 	</update>
 	
-	<!--페이징 처리(1) 레코드 건수_김찬곤  -->
-	<!-- <select id="getCountMentor" resultType="int">
-		SELECT COUNT(*) FROM MENTOR
-	</select> -->
-	
-<!-- 사용하지 않는 쿼리  -->	
-	<!--페이징 처리(2) 페이지 처리 후 지정된 범위의 멘토 조회_김찬곤  -->
-	<!-- <select id="getSearchMentor" resultType="com.company.mentor.service.MentorVO">
-		SELECT * FROM(
-			SELECT ROWNUM RN, A.* FROM(
-				SELECT * FROM MENTOR
-				ORDER BY MENTOR_ID
-				) A
-			)
-		WHERE RN BETWEEN #{start} AND #{end}
-	</select> -->
-<!-- End of 사용하지 않는 쿼리  -->	
-	
-<!-- End of 김찬곤 ============================================================================  -->	
 	
 	<!-- 양소민 추가 -->
 	<!-- 멘토 아이디 조회 -->
