@@ -204,14 +204,6 @@
 		mentorRegisterForm.submit();
 	}
 	
-	// 멘토링 등록
-		function MentoringRegister(){
-			var param = $('#id').val();
-			var mentorRegisterForm = document.mentorRegisterForm;
-			mentorRegisterForm.action = "MentoringRegister?id="+param;
-			mentorRegisterForm.submit();
-		}
-	
 	// 세부검색(최신순, 인기순)
 	function optionSelect(obj){
 		var param = $('#items_per_page').val();

@@ -87,7 +87,7 @@
 			#{id},
 			#{mentoring_age},
 			#{mentoring_location},
-			'대기',
+			'승인대기',
 			to_date(sysdate, 'yyyy-MM-dd')
 		)
 	</insert>
