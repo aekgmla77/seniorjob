@@ -1,6 +1,6 @@
-# seniorjob
 
-
-네이버 api 
-id : bf2C9lI_yasP9ruFQpN4
-pw : _8hDu9wHnj
+작성한 view 모음
+seniorjob/seniorjob/src/main/webapp/WEB-INF/views/Service_Center/
+seniorjob/seniorjob/src/main/webapp/WEB-INF/views/inquire/
+seniorjob/seniorjob/src/main/webapp/WEB-INF/views/job.jsp
+seniorjob/seniorjob/src/main/webapp/WEB-INF/views/seniorTimes.jsp
